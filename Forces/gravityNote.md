@@ -34,6 +34,7 @@ How can I make an attractor and mover communicate?
 4. A method in the Attractor class that receives a Mover and returns a p5.Vector, which is the attraction force. Then pass it into the Mover's applyForce()
 
 I'll do #4. I don't really want to change the applyForce() method.
+
 ---
 What about when many objects attract many objects?
 - according to Newton's 3rd law, all forces occur in pairs
