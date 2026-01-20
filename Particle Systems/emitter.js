@@ -10,9 +10,11 @@ function mousePressed() {
 
 function draw() {
     background(255);
-
+    let gravity = createVector(0, 0.1);
     // ok to use for.. of since no elements are being removed from the array
     for (let emitter of emitters) {
+        emitter.applyForce(gravity);
+        emitter.addParticle();
         emitter.run();
    }
 }
@@ -27,13 +29,29 @@ class Emitter {
     }
 
     addParticle() {
-        this.particles.push(new Particle(this.origin.x, this.origin.y));
+        let r = random(1);
+
+        if (r < 0.5) {
+            this.particles.push(new Particle(this.origin.x, this.origin.y));
+        } else {
+            this.particles.push(new Confetti(this.origin.x, this.origin.y));
+        }
+    }
+
+    applyForce(force) {
+        for (let particle of this.particles) {
+            particle.applyForce(force);
+        }
+    }
+
+    applyRepeller(repeller) {
+        for (let particle of this.particles) {
+            let force = repeller.repel(particle);
+            particle.applyForce(force);
+        }
     }
 
     run() {
-        this.addParticle();
-
-
         let length = this.particles.length - 1;
         let gravity = createVector(0, 0.1);
 

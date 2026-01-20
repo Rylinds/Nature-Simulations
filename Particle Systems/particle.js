@@ -56,6 +56,7 @@ class Particle {
         this.acceleration = createVector(random(-1, 1), random(-2, 0));
         this.velocity = createVector(0, 0);
         this.lifespan = 255.0;            // tells us how long the particle has been alive
+        this.mass = 1;
     }
 
     update() {
@@ -72,10 +73,37 @@ class Particle {
     }
 
     applyForce(force) {
-        this.acceleration.add(force);
+        let f = force.copy();
+        f.div(this.mass);
+        this.acceleration.add(f);
     }
 
     isDead() {
         return (this.lifespan < 0.0);
+    }
+}
+
+// introducing inheritance / polymorphism
+class Confetti extends Particle {
+
+    constructor(x, y) {
+        super(x, y);
+        // could add confetti variables here
+    }
+
+    // other methods like update() are inherited from the parent
+
+    // override show()
+    show() {
+        let angle = map(this.position.x, 0, width, 0, TWO_PI * 2);
+
+        rectMode(CENTER);
+        fill(0, this.lifespan);
+        stroke(0, this.lifespan);
+        push();
+        translate(this.position.x, this.position.y);
+        rotate(angle);
+        square(0, 0, 12);
+        pop();
     }
 }
