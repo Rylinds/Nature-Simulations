@@ -10,13 +10,13 @@ class Boid {
         this.maxforce = 0.3;
 
         const mesaColors = [
-            color('#D95D34'),   // red clay
-            color('#F6A600'),  // orange/burnt sienna
-            color('#CBE3B4'), // tan
-            color('#7B9A9E'),   // green
-            color('#A35D3B'),  // blue
-            color('#A89CA6'),  // purple
-            color('#4B4B4B')    // yellow/golden
+            color('#D95D34'),
+            color('#F6A600'),
+            color('#CBE3B4'),
+            color('#7B9A9E'),
+            color('#A35D3B'),
+            color('#A89CA6'),
+            color('#4B4B4B')
         ];
         this.color = random(mesaColors);
 
