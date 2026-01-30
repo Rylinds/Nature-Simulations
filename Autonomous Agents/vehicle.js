@@ -143,15 +143,15 @@ class Vehicle {
         this.acceleration.add(force);
     }
     
-    separate(vehicles) {
+    separate(boids) {
         let desiredSeparation = this.r * 2;
 
-        let sum = createVector(0, 0);
+        let sum = createVector();
         let count = 0;
 
-        for (let other of vehicles) {
+        for (let other of boids) {
             let d = p5.Vector.dist(this.position, other.position);
-            if (this !== other && d < desiredSeparation) {
+            if ((this !== other) && (d < desiredSeparation)) {
                 let diff = p5.Vector.sub(this.position, other.position);
                 diff.normalize();
                 diff.div(d + 0.0001);        // scale by distance
@@ -166,6 +166,9 @@ class Vehicle {
             let steer = p5.Vector.sub(sum, this.velocity);
             steer.limit(this.maxforce);
             this.applyForce(steer);
+            return steer;
+        } else {
+            return createVector(0, 0);
         }
     }
 

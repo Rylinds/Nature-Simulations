@@ -44,3 +44,15 @@ Qualities
 * Nonlinearity
 * Competition and cooperation
 * Feedback
+
+### Flocking
+Simulating animal flocking behavior can work like:
+* use a steering force formula to implement the rules of flocking
+* the steering forces will be group behaviors and will require each vehicle to perceive the others
+* combine and weight multiple forces
+* the result will be a complex system -> intelligent group behavior will emerge without a group leader
+
+3 rules to govern flocking:
+1. Separation (avoidance)
+2. Alignment (copy)
+3. Cohersion (center)
