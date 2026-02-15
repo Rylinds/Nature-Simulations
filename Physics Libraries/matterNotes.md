@@ -1,8 +1,12 @@
 ### Matter.js Overview
 **Engine**: entity that manages the physics simulation itself. The engine holds onto the world of the simulation as well as various properties indicating how the world is updated over time.
+
 **Bodies**: primary elements in the world, corresponding to the physical objects being simulated.
+
 **Composite**: container that allows for the creation of complex entities (ex: the world itself).
+
 **Constraints**: act as connections between the bodies.
+
 **Vector**: describes an entity with a magnitude and direction using x- and y- components, defining position, velocities, and forces in the world.
 
 **Quick comparision for how vectors work**:
@@ -52,4 +56,5 @@ Technique for extracting properties from an object and assigning them to variabl
 Managed through the `Constraint` class and `MouseConstraint` class.
 **Distance constraint**: connection of fixed length between two bodies.
 * the constraint is attached to each body at a specific anchor, a point relative to the body's center.
+
 **Revolute joint**: connects two bodies at a common anchor point (hinge).
